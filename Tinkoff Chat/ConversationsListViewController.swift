@@ -51,6 +51,12 @@ class ConversationsListViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ConversationViewController {
+            vc.navigationItem.title = sender as? String 
+        }
+    }
 }
 
 
@@ -67,6 +73,13 @@ extension ConversationsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? ConversationTableViewCell {
+            let name = cell.name
+            self.performSegue(withIdentifier: "toSelectedConversation", sender: name)
+        }
     }
 }
 

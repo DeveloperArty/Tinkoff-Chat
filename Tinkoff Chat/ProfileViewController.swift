@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var textColorLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
+    @IBOutlet weak var elementsHeight: NSLayoutConstraint!
     
     // Properies
     let imagePicker = UIImagePickerController()
@@ -33,17 +34,17 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if self.view.frame.height < 500 {
+            self.elementsHeight.constant = 19
+        }
+        
         print(#function)
-        print(nameLabel.frame)
-        print(nameField.frame)
         imagePicker.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print(#function)
-        print(nameLabel.frame)
-        print(nameField.frame)
         
     }
     
@@ -51,24 +52,18 @@ class ProfileViewController: UIViewController {
         super.viewDidAppear(animated)
         
         print(#function)
-        print(nameLabel.frame)
-        print(nameField.frame)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         print(#function)
-        print(nameLabel.frame)
-        print(nameField.frame)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
         print(#function)
-        print(nameLabel.frame)
-        print(nameField.frame)
     }
     
     override func didReceiveMemoryWarning() {
@@ -113,6 +108,10 @@ class ProfileViewController: UIViewController {
     @IBAction func takePhoto(_ sender: UIButton) {
         imagePicker.sourceType = .camera
         self.present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
