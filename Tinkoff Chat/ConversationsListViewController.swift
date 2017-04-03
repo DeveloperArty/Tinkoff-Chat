@@ -46,6 +46,12 @@ class ConversationsListViewController: UIViewController {
         let nib = UINib(nibName: "ConversationTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "conversationCell")
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
