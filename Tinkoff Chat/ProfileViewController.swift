@@ -33,8 +33,6 @@ class ProfileViewController: UIViewController {
     
 // MARK: - Properies
     let imagePicker = UIImagePickerController()
-//    let gcdDataManager = GCDDataManager()
-//    let operationDataManager = OperationDataManager()
     
     // Эх, сюда бы фабрику с DI..
     var dataManager: ProfileDataManager?
@@ -73,30 +71,33 @@ class ProfileViewController: UIViewController {
         }
         
         dataManager!.getData() { dataCortege in
-            DispatchQueue.main.async {
-                
-                self.nicknameAL = dataCortege.nickname
-                self.infoAL = dataCortege.info
-                self.avatarAL = dataCortege.avatar
-                self.textColorAL = dataCortege.textColor
-                
-                if let nick = dataCortege.nickname {
-                    self.nameField.text = nick
-                }
-                if let info = dataCortege.info {
-                    self.infoTextView.text = info
-                }
-                if let ava = dataCortege.avatar {
-                    self.userImage.contentMode = .scaleAspectFit
-                    self.userImage.image = ava
-                }
-                if let color = dataCortege.textColor {
-                    self.textColorLabel.textColor = color
-                }
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true 
-                return 
+            self.nicknameAL = dataCortege.nickname
+            self.infoAL = dataCortege.info
+            self.avatarAL = dataCortege.avatar
+            self.textColorAL = dataCortege.textColor
+            
+            if let nick = dataCortege.nickname {
+                self.nameField.text = nick
             }
+            
+            if let info = dataCortege.info {
+                self.infoTextView.text = info
+            }
+            
+            if let ava = dataCortege.avatar {
+                self.userImage.contentMode = .scaleAspectFit
+                self.userImage.image = ava
+            } else {
+                self.userImage.image = #imageLiteral(resourceName: "ProfilePlaceholder")
+            }
+            
+            if let color = dataCortege.textColor {
+                self.textColorLabel.textColor = color
+            }
+            
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            return
         }
     }
     
@@ -120,7 +121,10 @@ class ProfileViewController: UIViewController {
             let actionRepeat = UIAlertAction(title: "Повторить",
                                              style: .default,
                                              handler: { action in
-                                                self.saveGCD(self.gcdButton)
+                                                guard let data = self.checkDataToSave() else {
+                                                    return
+                                                }
+                                                self.dataManager?.saveData(data: data, completionHandler: self.savingCompleted(_:))
                                                 return
             })
             alertContr.addAction(actionOK)

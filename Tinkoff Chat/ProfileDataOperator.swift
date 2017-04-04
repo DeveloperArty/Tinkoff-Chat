@@ -102,10 +102,20 @@ class ProfileDataOperator {
     
     private func saveAvatar(image: UIImage) {
         print(#function)
+        
+        
         let path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .allDomainsMask, true)[0] + "avatar.jpg"
-        fileManager.createFile(atPath: path,
-                               contents: UIImageJPEGRepresentation(image, 1),
-                               attributes: nil)
+        if image == #imageLiteral(resourceName: "ProfilePlaceholder") {
+            do {
+                try fileManager.removeItem(atPath: path)
+            } catch {
+                
+            }
+        } else {
+            fileManager.createFile(atPath: path,
+                                   contents: UIImageJPEGRepresentation(image, 1),
+                                   attributes: nil)
+        }
     }
     
     private func saveColor(color: UIColor) {
@@ -117,7 +127,6 @@ class ProfileDataOperator {
             if comps.count > 3 {
                 colorfulString = "\(comps[0]) " + "\(comps[1]) " + "\(comps[2]) " + "\(comps[3])"
             }
-            print(colorfulString)
             fileManager.createFile(atPath: path,
                                    contents: colorfulString.data(using: .utf8),
                                    attributes: nil)

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>Please allow access to camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>Please allow access to your photo library</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
