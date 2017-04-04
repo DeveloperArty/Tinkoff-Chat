@@ -26,11 +26,18 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var gcdButton: UIButton!
+    @IBOutlet weak var operationButton: UIButton!
+    
     @IBOutlet weak var elementsHeight: NSLayoutConstraint!
     
 // MARK: - Properies
     let imagePicker = UIImagePickerController()
-    let gcdDataManager = GCDDataManager()
+//    let gcdDataManager = GCDDataManager()
+//    let operationDataManager = OperationDataManager()
+    
+    // Эх, сюда бы фабрику с DI..
+    var dataManager: ProfileDataManager?
     
     // AL - After Load
     var nicknameAL: String?
@@ -61,7 +68,11 @@ class ProfileViewController: UIViewController {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        gcdDataManager.getData() { dataCortege in
+        if dataManager == nil {
+            dataManager = GCDDataManager()
+        }
+        
+        dataManager!.getData() { dataCortege in
             DispatchQueue.main.async {
                 
                 self.nicknameAL = dataCortege.nickname
@@ -109,7 +120,7 @@ class ProfileViewController: UIViewController {
             let actionRepeat = UIAlertAction(title: "Повторить",
                                              style: .default,
                                              handler: { action in
-                                                // re- saving data
+                                                self.saveGCD(self.gcdButton)
                                                 return
             })
             alertContr.addAction(actionOK)
@@ -118,9 +129,18 @@ class ProfileViewController: UIViewController {
         }
     }
     
-// MARK: - UI Events
-    // Saving Meths
-    @IBAction func saveGCD(_ sender: UIButton) {
+    func checkDataToSave() -> ProfileData? {
+        
+        let profileData = ProfileData()
+        
+        guard (nameField.text != nicknameAL) || (infoTextView.text != infoAL) || userImage.image != avatarAL || textColorLabel.textColor != textColorAL else {
+            return nil
+        }
+        
+        gcdButton.isEnabled = false
+        operationButton.isEnabled = false
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         
         var nickname: String? = nil
         if (nameField.text != "") && (nameField.text != nicknameAL) {
@@ -143,19 +163,49 @@ class ProfileViewController: UIViewController {
             textColorAL = color
         }
         
-        gcdDataManager.saveData(data: (nickname, info, avatar, color)) { success in
-            DispatchQueue.main.async {
-                if success {
-                    self.presentAlert(forCase: "Success")
-                } else {
-                    self.presentAlert(forCase: "Fail")
-                }
-            }
+        profileData.nickname = nickname
+        profileData.info = info
+        profileData.avatar = avatar
+        profileData.textColor = color
+        
+        return profileData
+    }
+    
+    func savingCompleted(_ success: Bool) {
+        
+        self.gcdButton.isEnabled = true
+        self.operationButton.isEnabled = true
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+        if success {
+            self.presentAlert(forCase: "Success")
+        } else {
+            self.presentAlert(forCase: "Fail")
         }
+    }
+    
+// MARK: - UI Events
+    // Saving Meths
+    @IBAction func saveGCD(_ sender: UIButton) {
+        
+        guard let data = checkDataToSave() else {
+            return
+        }
+        if dataManager is OperationDataManager || dataManager == nil  {
+            self.dataManager = GCDDataManager()
+        }
+        dataManager!.saveData(data: data, completionHandler: savingCompleted(_:))
     }
     
     @IBAction func saveOperation(_ sender: UIButton) {
         
+        guard let data = checkDataToSave() else {
+            return
+        }
+        if dataManager is GCDDataManager || dataManager == nil  {
+            self.dataManager = OperationDataManager()
+        }
+        dataManager!.saveData(data: data, completionHandler: savingCompleted(_:))
     }
     
     // Data Setup

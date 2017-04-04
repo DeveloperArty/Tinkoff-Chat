@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="WxT-EO-04f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qyf-HD-Z9w">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -277,20 +277,15 @@
                                         <rect key="frame" x="0.0" y="0.0" width="144" height="144.5"/>
                                         <gestureRecognizers/>
                                     </imageView>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Eck-d1-0fE">
-                                        <rect key="frame" x="62" y="61.5" width="20" height="20"/>
-                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96854287385940552" green="0.96868163347244263" blue="0.96851247549057007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="Eck-d1-0fE" firstAttribute="centerX" secondItem="Pez-74-D0d" secondAttribute="centerX" id="DqK-lU-sdE"/>
                                     <constraint firstAttribute="trailing" secondItem="rxy-NE-gqe" secondAttribute="trailing" id="J2o-G6-gfv"/>
                                     <constraint firstAttribute="bottom" secondItem="rxy-NE-gqe" secondAttribute="bottom" id="bJ0-2G-DtB"/>
                                     <constraint firstItem="rxy-NE-gqe" firstAttribute="top" secondItem="Pez-74-D0d" secondAttribute="top" id="bhl-jd-plg"/>
                                     <constraint firstItem="rxy-NE-gqe" firstAttribute="leading" secondItem="Pez-74-D0d" secondAttribute="leading" id="ehn-gZ-ND9"/>
                                     <constraint firstAttribute="width" secondItem="Pez-74-D0d" secondAttribute="height" multiplier="1:1" id="k2F-nk-bZP"/>
-                                    <constraint firstItem="Eck-d1-0fE" firstAttribute="centerY" secondItem="Pez-74-D0d" secondAttribute="centerY" id="xd5-Ln-6w6"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Изображение пользователя" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Hu-R8-gFZ">
@@ -358,6 +353,9 @@
                                     <action selector="saveOperation:" destination="WxT-EO-04f" eventType="touchUpInside" id="D4J-29-P3k"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Eck-d1-0fE">
+                                <rect key="frame" x="150" y="142" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.96854287390000005" green="0.96868163350000003" blue="0.96851247549999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -372,6 +370,7 @@
                             <constraint firstItem="ViA-uG-VAM" firstAttribute="bottom" secondItem="Bgm-nP-6W7" secondAttribute="bottom" id="54m-bs-vM4"/>
                             <constraint firstItem="gWJ-JQ-RDO" firstAttribute="top" secondItem="C4x-qf-QDl" secondAttribute="bottom" constant="8" id="6kv-UM-ghy"/>
                             <constraint firstItem="4Hu-R8-gFZ" firstAttribute="height" secondItem="C4x-qf-QDl" secondAttribute="height" id="6rh-Pe-1Ip"/>
+                            <constraint firstItem="Eck-d1-0fE" firstAttribute="centerX" secondItem="dDT-Us-Ego" secondAttribute="centerX" id="7k6-sA-GYr"/>
                             <constraint firstItem="zkf-DF-smC" firstAttribute="trailing" secondItem="E1W-JN-FdW" secondAttribute="trailing" id="7sO-UX-pYH"/>
                             <constraint firstItem="yLi-Ju-NDs" firstAttribute="leading" secondItem="dDT-Us-Ego" secondAttribute="leading" constant="20" id="8Ac-z1-bO2"/>
                             <constraint firstItem="ViA-uG-VAM" firstAttribute="width" secondItem="Bgm-nP-6W7" secondAttribute="width" id="8tc-sa-4uv"/>
@@ -424,6 +423,7 @@
                             <constraint firstItem="Igh-9h-Hr2" firstAttribute="bottom" secondItem="rxy-NE-gqe" secondAttribute="bottom" id="mxI-Jf-6Q2"/>
                             <constraint firstItem="Oem-pd-4S1" firstAttribute="height" secondItem="C4x-qf-QDl" secondAttribute="height" id="nk4-MG-ZDD"/>
                             <constraint firstItem="dXI-kA-5yT" firstAttribute="height" secondItem="Bgm-nP-6W7" secondAttribute="height" id="pTF-tB-f5x"/>
+                            <constraint firstItem="Eck-d1-0fE" firstAttribute="centerY" secondItem="yLi-Ju-NDs" secondAttribute="centerY" id="qg1-H5-uoR"/>
                             <constraint firstItem="dXI-kA-5yT" firstAttribute="bottom" secondItem="Bgm-nP-6W7" secondAttribute="bottom" id="sf0-Aj-lBt"/>
                         </constraints>
                         <connections>
@@ -438,12 +438,14 @@
                         <outlet property="binButton" destination="E1W-JN-FdW" id="aSj-33-34b"/>
                         <outlet property="camButton" destination="zkf-DF-smC" id="omF-j8-j0Q"/>
                         <outlet property="elementsHeight" destination="DOe-oH-ZLN" id="et0-5p-UO2"/>
+                        <outlet property="gcdButton" destination="BFo-9l-Cvq" id="DPW-tg-Kxf"/>
                         <outlet property="imageLabel" destination="4Hu-R8-gFZ" id="n08-dq-V5q"/>
                         <outlet property="infoLabel" destination="yLi-Ju-NDs" id="6MV-ei-sBU"/>
                         <outlet property="infoTextView" destination="lTe-Sp-iKt" id="e8y-9r-rI1"/>
                         <outlet property="libButton" destination="Igh-9h-Hr2" id="ZRJ-tu-P7L"/>
                         <outlet property="nameField" destination="gWJ-JQ-RDO" id="Kla-Bg-dH4"/>
                         <outlet property="nameLabel" destination="C4x-qf-QDl" id="jZm-PB-e1n"/>
+                        <outlet property="operationButton" destination="DAc-rh-69T" id="xSk-oc-ANR"/>
                         <outlet property="textColorLabel" destination="Oem-pd-4S1" id="mFI-Ty-8a5"/>
                         <outlet property="userImage" destination="rxy-NE-gqe" id="WSf-8p-tRN"/>
                     </connections>

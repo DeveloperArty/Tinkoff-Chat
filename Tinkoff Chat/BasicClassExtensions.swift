@@ -13,3 +13,4 @@ extension String {
         return (self as NSString).floatValue
     }
 }
+

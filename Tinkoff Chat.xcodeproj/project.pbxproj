@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84090DDA1E92372600380A91 /* BasicClassExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84090DD91E92372600380A91 /* BasicClassExtensions.swift */; };
+		84090DDC1E9297A200380A91 /* ProfileDataOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84090DDB1E9297A200380A91 /* ProfileDataOperator.swift */; };
 		840B22F41E8114B2006F804E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B22F31E8114B2006F804E /* ProfileViewController.swift */; };
 		84442EA21E8E5698000835DB /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84442EA11E8E5698000835DB /* ProfileDataManager.swift */; };
 		84442EA71E8E6A1B000835DB /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84442EA61E8E6A1B000835DB /* GCDDataManager.swift */; };
@@ -24,10 +25,14 @@
 		8498A2721E855DBB00CF2D96 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498A2701E855DBB00CF2D96 /* ConversationTableViewCell.swift */; };
 		8498A2731E855DBB00CF2D96 /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8498A2711E855DBB00CF2D96 /* ConversationTableViewCell.xib */; };
 		8498A2761E880DFC00CF2D96 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498A2751E880DFC00CF2D96 /* ConversationViewController.swift */; };
+		84DCDE731E93DFA100F1F563 /* SaveOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCDE721E93DFA100F1F563 /* SaveOperation.swift */; };
+		84DCDE751E93E54C00F1F563 /* GetOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCDE741E93E54C00F1F563 /* GetOperation.swift */; };
+		84DCDE771E93EB0D00F1F563 /* ProfileDataDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DCDE761E93EB0D00F1F563 /* ProfileDataDefinition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		84090DD91E92372600380A91 /* BasicClassExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicClassExtensions.swift; sourceTree = "<group>"; };
+		84090DDB1E9297A200380A91 /* ProfileDataOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataOperator.swift; sourceTree = "<group>"; };
 		840B22F31E8114B2006F804E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		84442EA11E8E5698000835DB /* ProfileDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
 		84442EA61E8E6A1B000835DB /* GCDDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
@@ -46,6 +51,9 @@
 		8498A2701E855DBB00CF2D96 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		8498A2711E855DBB00CF2D96 /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
 		8498A2751E880DFC00CF2D96 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		84DCDE721E93DFA100F1F563 /* SaveOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveOperation.swift; sourceTree = "<group>"; };
+		84DCDE741E93E54C00F1F563 /* GetOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetOperation.swift; sourceTree = "<group>"; };
+		84DCDE761E93EB0D00F1F563 /* ProfileDataDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataDefinition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +67,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8431417E1E929B2400A80A79 /* Data Operator */ = {
+			isa = PBXGroup;
+			children = (
+				84DCDE761E93EB0D00F1F563 /* ProfileDataDefinition.swift */,
+				84090DDB1E9297A200380A91 /* ProfileDataOperator.swift */,
+			);
+			name = "Data Operator";
+			sourceTree = "<group>";
+		};
+		8431417F1E929B3900A80A79 /* Data Managers */ = {
+			isa = PBXGroup;
+			children = (
+				84442EA11E8E5698000835DB /* ProfileDataManager.swift */,
+				84442EA61E8E6A1B000835DB /* GCDDataManager.swift */,
+				84DCDE781E9420E400F1F563 /* Operation Data Manager  */,
+			);
+			name = "Data Managers";
+			sourceTree = "<group>";
+		};
+		843141801E929D2900A80A79 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				840B22F31E8114B2006F804E /* ProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		84442EA31E8E56A4000835DB /* DAL */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,9 +105,8 @@
 		84442EA41E8E5718000835DB /* Profile Data */ = {
 			isa = PBXGroup;
 			children = (
-				84442EA11E8E5698000835DB /* ProfileDataManager.swift */,
-				84442EA61E8E6A1B000835DB /* GCDDataManager.swift */,
-				84442EA81E8E6A46000835DB /* OperationDataManager.swift */,
+				8431417E1E929B2400A80A79 /* Data Operator */,
+				8431417F1E929B3900A80A79 /* Data Managers */,
 			);
 			name = "Profile Data";
 			sourceTree = "<group>";
@@ -124,7 +158,7 @@
 		8498A26B1E8556A100CF2D96 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				840B22F31E8114B2006F804E /* ProfileViewController.swift */,
+				843141801E929D2900A80A79 /* Profile */,
 				846378801E8A99D9002CE222 /* Conversation */,
 				8498A2741E880DC400CF2D96 /* Conversations List */,
 			);
@@ -162,6 +196,24 @@
 				8498A26F1E855D6A00CF2D96 /* Conversation Cell */,
 			);
 			name = "Conversations List";
+			sourceTree = "<group>";
+		};
+		84DCDE711E93DF6B00F1F563 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				84DCDE721E93DFA100F1F563 /* SaveOperation.swift */,
+				84DCDE741E93E54C00F1F563 /* GetOperation.swift */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
+		84DCDE781E9420E400F1F563 /* Operation Data Manager  */ = {
+			isa = PBXGroup;
+			children = (
+				84442EA81E8E6A46000835DB /* OperationDataManager.swift */,
+				84DCDE711E93DF6B00F1F563 /* Operations */,
+			);
+			name = "Operation Data Manager ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,15 +293,19 @@
 				8498A2761E880DFC00CF2D96 /* ConversationViewController.swift in Sources */,
 				840B22F41E8114B2006F804E /* ProfileViewController.swift in Sources */,
 				846378841E8A9B2B002CE222 /* MessageTableViewCell.swift in Sources */,
+				84090DDC1E9297A200380A91 /* ProfileDataOperator.swift in Sources */,
 				84090DDA1E92372600380A91 /* BasicClassExtensions.swift in Sources */,
 				8498A26A1E85569A00CF2D96 /* ConversationsListViewController.swift in Sources */,
 				8498A2721E855DBB00CF2D96 /* ConversationTableViewCell.swift in Sources */,
 				8475A6751E693CF4000D134C /* Tinkoff_Chat.xcdatamodeld in Sources */,
+				84DCDE771E93EB0D00F1F563 /* ProfileDataDefinition.swift in Sources */,
 				8498A26E1E855C6800CF2D96 /* ConversationCellConfiguration.swift in Sources */,
 				84442EA21E8E5698000835DB /* ProfileDataManager.swift in Sources */,
+				84DCDE731E93DFA100F1F563 /* SaveOperation.swift in Sources */,
 				84442EA71E8E6A1B000835DB /* GCDDataManager.swift in Sources */,
 				846378821E8A9A31002CE222 /* MessageCellConfiguration.swift in Sources */,
 				8475A66D1E693CF4000D134C /* AppDelegate.swift in Sources */,
+				84DCDE751E93E54C00F1F563 /* GetOperation.swift in Sources */,
 				84442EA91E8E6A46000835DB /* OperationDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

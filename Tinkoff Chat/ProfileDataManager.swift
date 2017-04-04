@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ProfileDataManager {
     
+    func saveData(data: ProfileData, completionHandler: @escaping (_ success: Bool) -> Void )
     
+    func getData(completionHandler: @escaping (_ data: ProfileData) -> Void )
 }

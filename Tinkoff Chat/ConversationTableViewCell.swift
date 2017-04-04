@@ -59,7 +59,7 @@ class ConversationTableViewCell: UITableViewCell, ConversationCellConfiguration 
     var online: Bool = false {
         willSet {
             if newValue == true {
-                self.backgroundColor = #colorLiteral(red: 0.9995459914, green: 0.9886584878, blue: 0.4961454272, alpha: 1)
+                self.backgroundColor = UIColor.yellow
             } else {
                 self.backgroundColor = UIColor.white
             }
@@ -68,9 +68,9 @@ class ConversationTableViewCell: UITableViewCell, ConversationCellConfiguration 
     var hasUnreadMessages: Bool = false {
         willSet {
             if newValue == true {
-                self.nameLabel.font = UIFont.boldSystemFont(ofSize: 21)
+                self.messageLabel.font = UIFont.boldSystemFont(ofSize: 21)
             } else {
-                self.nameLabel.font = UIFont.systemFont(ofSize: 21)
+                self.messageLabel.font = UIFont.systemFont(ofSize: 21)
             }
         }
     }
