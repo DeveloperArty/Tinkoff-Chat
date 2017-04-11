@@ -10,6 +10,10 @@
 		84090DDA1E92372600380A91 /* BasicClassExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84090DD91E92372600380A91 /* BasicClassExtensions.swift */; };
 		84090DDC1E9297A200380A91 /* ProfileDataOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84090DDB1E9297A200380A91 /* ProfileDataOperator.swift */; };
 		840B22F41E8114B2006F804E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B22F31E8114B2006F804E /* ProfileViewController.swift */; };
+		841E4A7F1E9BBAD900CC5AFA /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E4A7E1E9BBAD900CC5AFA /* Communicator.swift */; };
+		841E4A811E9BBC0000CC5AFA /* CommunicatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E4A801E9BBC0000CC5AFA /* CommunicatorDelegate.swift */; };
+		841E4A831E9BBD3500CC5AFA /* MultipeerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E4A821E9BBD3500CC5AFA /* MultipeerCommunicator.swift */; };
+		841E4A871E9BBDBA00CC5AFA /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E4A861E9BBDBA00CC5AFA /* CommunicationManager.swift */; };
 		84442EA21E8E5698000835DB /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84442EA11E8E5698000835DB /* ProfileDataManager.swift */; };
 		84442EA71E8E6A1B000835DB /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84442EA61E8E6A1B000835DB /* GCDDataManager.swift */; };
 		84442EA91E8E6A46000835DB /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84442EA81E8E6A46000835DB /* OperationDataManager.swift */; };
@@ -34,6 +38,10 @@
 		84090DD91E92372600380A91 /* BasicClassExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicClassExtensions.swift; sourceTree = "<group>"; };
 		84090DDB1E9297A200380A91 /* ProfileDataOperator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataOperator.swift; sourceTree = "<group>"; };
 		840B22F31E8114B2006F804E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		841E4A7E1E9BBAD900CC5AFA /* Communicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
+		841E4A801E9BBC0000CC5AFA /* CommunicatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicatorDelegate.swift; sourceTree = "<group>"; };
+		841E4A821E9BBD3500CC5AFA /* MultipeerCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerCommunicator.swift; sourceTree = "<group>"; };
+		841E4A861E9BBDBA00CC5AFA /* CommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 		84442EA11E8E5698000835DB /* ProfileDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
 		84442EA61E8E6A1B000835DB /* GCDDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
 		84442EA81E8E6A46000835DB /* OperationDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
@@ -67,6 +75,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		841E4A841E9BBD4000CC5AFA /* Communicator */ = {
+			isa = PBXGroup;
+			children = (
+				841E4A7E1E9BBAD900CC5AFA /* Communicator.swift */,
+				841E4A821E9BBD3500CC5AFA /* MultipeerCommunicator.swift */,
+			);
+			name = Communicator;
+			sourceTree = "<group>";
+		};
+		841E4A851E9BBD5300CC5AFA /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				841E4A801E9BBC0000CC5AFA /* CommunicatorDelegate.swift */,
+				841E4A861E9BBDBA00CC5AFA /* CommunicationManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
 		8431417E1E929B2400A80A79 /* Data Operator */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +118,15 @@
 				840B22F31E8114B2006F804E /* ProfileViewController.swift */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		84355F8A1E954FDD002FC093 /* MultipeerConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				841E4A841E9BBD4000CC5AFA /* Communicator */,
+				841E4A851E9BBD5300CC5AFA /* Manager */,
+			);
+			name = MultipeerConnectivity;
 			sourceTree = "<group>";
 		};
 		84442EA31E8E56A4000835DB /* DAL */ = {
@@ -148,6 +183,7 @@
 		8475A66B1E693CF4000D134C /* Tinkoff Chat */ = {
 			isa = PBXGroup;
 			children = (
+				84355F8A1E954FDD002FC093 /* MultipeerConnectivity */,
 				84442EA31E8E56A4000835DB /* DAL */,
 				8498A26B1E8556A100CF2D96 /* View Controllers */,
 				8498A26C1E8556C600CF2D96 /* Resources */,
@@ -292,6 +328,7 @@
 			files = (
 				8498A2761E880DFC00CF2D96 /* ConversationViewController.swift in Sources */,
 				840B22F41E8114B2006F804E /* ProfileViewController.swift in Sources */,
+				841E4A871E9BBDBA00CC5AFA /* CommunicationManager.swift in Sources */,
 				846378841E8A9B2B002CE222 /* MessageTableViewCell.swift in Sources */,
 				84090DDC1E9297A200380A91 /* ProfileDataOperator.swift in Sources */,
 				84090DDA1E92372600380A91 /* BasicClassExtensions.swift in Sources */,
@@ -306,7 +343,10 @@
 				846378821E8A9A31002CE222 /* MessageCellConfiguration.swift in Sources */,
 				8475A66D1E693CF4000D134C /* AppDelegate.swift in Sources */,
 				84DCDE751E93E54C00F1F563 /* GetOperation.swift in Sources */,
+				841E4A831E9BBD3500CC5AFA /* MultipeerCommunicator.swift in Sources */,
+				841E4A811E9BBC0000CC5AFA /* CommunicatorDelegate.swift in Sources */,
 				84442EA91E8E6A46000835DB /* OperationDataManager.swift in Sources */,
+				841E4A7F1E9BBAD900CC5AFA /* Communicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

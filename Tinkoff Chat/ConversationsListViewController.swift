@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class ConversationsListViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class ConversationsListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // Properties 
+    let communicationManager: CommunicatorDelegate = CommunicationManager()
     // Имитация полученных данных
     var onlineConvers: [(name: String, date: Date?, message: String?, online: Bool, hasUnreadMessages: Bool)] = [("Sam", Date(), "Hi!", true, true),
                                                                                                                  ("Sam", Date(), "Hi!", true, false),
@@ -33,13 +35,11 @@ class ConversationsListViewController: UIViewController {
                                                                                                                   ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(1000000000))), nil, false, true),
                                                                                                                   ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(100000000))), nil, false, false),
                                                                                                                   ("Sam", Date(), nil, false, true),
-                                                                                                                  ("Sam", Date(), nil, false, false)]
-    
-    
+                                                                                                                  ("Sam", Date(), nil, false, false)]    
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -126,3 +126,4 @@ extension ConversationsListViewController: UITableViewDataSource {
         return cell
     }
 }
+
