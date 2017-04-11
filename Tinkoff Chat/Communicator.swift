@@ -13,6 +13,7 @@ protocol Communicator {
     func sendMessage(string: String,
                      to userID: String,
                      completionHandler: ((_ success: Bool, _ error: Error?) -> Void)? )
+    func start() 
     weak var delegate: CommunicatorDelegate? {get set}
     var online: Bool {get set}
 }

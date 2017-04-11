@@ -10,6 +10,9 @@ import Foundation
 
 protocol CommunicatorDelegate: class {
     
+    var vc: ConversationsListViewController? {get set}
+    
+    func start() 
     // discovering
     func didFoundUser(userID: String, userName: String)
     func didLostUser(userID: String)

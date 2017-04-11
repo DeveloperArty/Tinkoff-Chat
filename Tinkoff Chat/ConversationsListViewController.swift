@@ -17,28 +17,42 @@ class ConversationsListViewController: UIViewController {
     // Properties 
     let communicationManager: CommunicatorDelegate = CommunicationManager()
     // Имитация полученных данных
-    var onlineConvers: [(name: String, date: Date?, message: String?, online: Bool, hasUnreadMessages: Bool)] = [("Sam", Date(), "Hi!", true, true),
-                                                                                                                 ("Sam", Date(), "Hi!", true, false),
-                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(100000000))), "Hi!", true, true),
-                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(100000))), "Hi!", true, false),
-                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(10000000))), nil, true, true),
-                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(1000000))), nil, true, false),
-                                                                                                                 ("Sam", Date(), nil, true, true),
-                                                                                                                 ("Sam", Date(), nil, true, false)]
-                                                                                                                 
-                                                                                                                 
-                                                                                                                 
-    var offlineConvers: [(name: String, date: Date?, message: String?, online: Bool, hasUnreadMessages: Bool)] = [("Sam", Date(), "Hi!", false, true),
-                                                                                                                  ("Sam", Date(), "Hi!", false, false),
-                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(10000000))), "Hi!", false, true),
-                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(1000000000))), "Hi!", false, false),
-                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(1000000000))), nil, false, true),
-                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(100000000))), nil, false, false),
-                                                                                                                  ("Sam", Date(), nil, false, true),
-                                                                                                                  ("Sam", Date(), nil, false, false)]    
+//    var onlineConvers: [(name: String, date: Date?, message: String?, online: Bool, hasUnreadMessages: Bool)] = [("Sam", Date(), "Hi!", true, true),
+//                                                                                                                 ("Sam", Date(), "Hi!", true, false),
+//                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(100000000))), "Hi!", true, true),
+//                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(100000))), "Hi!", true, false),
+//                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(10000000))), nil, true, true),
+//                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(1000000))), nil, true, false),
+//                                                                                                                 ("Sam", Date(), nil, true, true),
+//                                                                                                                 ("Sam", Date(), nil, true, false)]
+//                                                                                                                 
+//                                                                                                                 
+//                                                                                                                 
+//    var offlineConvers: [(name: String, date: Date?, message: String?, online: Bool, hasUnreadMessages: Bool)] = [("Sam", Date(), "Hi!", false, true),
+//                                                                                                                  ("Sam", Date(), "Hi!", false, false),
+//                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(10000000))), "Hi!", false, true),
+//                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(1000000000))), "Hi!", false, false),
+//                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(1000000000))), nil, false, true),
+//                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(100000000))), nil, false, false),
+//                                                                                                                  ("Sam", Date(), nil, false, true),
+//                                                                                                                  ("Sam", Date(), nil, false, false)]
+    
+    var onlineConvers = [String: ConversationData]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    var offlineConvers = [String: ConversationData]()
+    
+    
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        communicationManager.vc = self 
+        communicationManager.start()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -110,11 +124,9 @@ extension ConversationsListViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "conversationCell", for: indexPath) as! ConversationTableViewCell
 
-        var conversationsData = [(name: String, date: Date?, message: String?, online: Bool, hasUnreadMessages: Bool)]()
-        if indexPath.section == 0 {
-            conversationsData = self.onlineConvers
-        } else {
-            conversationsData = self.offlineConvers
+        var conversationsData = [ConversationData]()
+        for value in onlineConvers.values {
+            conversationsData.append(value)
         }
         let convData = conversationsData[indexPath.row]
         cell.name = convData.name

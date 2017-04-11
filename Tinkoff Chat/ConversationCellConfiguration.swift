@@ -16,3 +16,12 @@ protocol ConversationCellConfiguration {
     var online: Bool {get set}
     var hasUnreadMessages: Bool {get set}
 }
+
+class ConversationData {
+    
+    var name: String?
+    var message: String?
+    var date: Date?
+    var online: Bool = false
+    var hasUnreadMessages: Bool = false 
+}
