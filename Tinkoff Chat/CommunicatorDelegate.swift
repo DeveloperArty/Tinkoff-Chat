@@ -7,12 +7,16 @@
 //
 
 import Foundation
+import UIKit
+
+
+// сообщение communicator и communicationManager
 
 protocol CommunicatorDelegate: class {
     
-    var vc: ConversationsListViewController? {get set}
+    var usersPresenter: UsersListPresenter? {get set}
+    var messagesPresenter: MessagesListPresenter? {get set}
     
-    func start() 
     // discovering
     func didFoundUser(userID: String, userName: String)
     func didLostUser(userID: String)
@@ -23,4 +27,20 @@ protocol CommunicatorDelegate: class {
     
     // messages
     func didReceiveMessage(text: String, fromUser: String, toUser: String)
+}
+
+
+// сообщение listVC и manager
+
+protocol UsersListPresenter: class {
+    
+    var onlineConvers: [String: ConversationData] {get set}
+}
+
+
+// сообщение conVC и manager 
+
+protocol MessagesListPresenter: class {
+    
+    var messages: [Message] {get set}
 }

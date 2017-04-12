@@ -9,33 +9,13 @@
 import UIKit
 import MultipeerConnectivity
 
-class ConversationsListViewController: UIViewController {
+class ConversationsListViewController: UIViewController, UsersListPresenter {
 
     // Outlets
     @IBOutlet weak var tableView: UITableView!
     
     // Properties 
     let communicationManager: CommunicatorDelegate = CommunicationManager()
-    // Имитация полученных данных
-//    var onlineConvers: [(name: String, date: Date?, message: String?, online: Bool, hasUnreadMessages: Bool)] = [("Sam", Date(), "Hi!", true, true),
-//                                                                                                                 ("Sam", Date(), "Hi!", true, false),
-//                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(100000000))), "Hi!", true, true),
-//                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(100000))), "Hi!", true, false),
-//                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(10000000))), nil, true, true),
-//                                                                                                                 ("Sam", Date(timeIntervalSinceNow: TimeInterval(arc4random_uniform(1000000))), nil, true, false),
-//                                                                                                                 ("Sam", Date(), nil, true, true),
-//                                                                                                                 ("Sam", Date(), nil, true, false)]
-//                                                                                                                 
-//                                                                                                                 
-//                                                                                                                 
-//    var offlineConvers: [(name: String, date: Date?, message: String?, online: Bool, hasUnreadMessages: Bool)] = [("Sam", Date(), "Hi!", false, true),
-//                                                                                                                  ("Sam", Date(), "Hi!", false, false),
-//                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(10000000))), "Hi!", false, true),
-//                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(1000000000))), "Hi!", false, false),
-//                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(1000000000))), nil, false, true),
-//                                                                                                                  ("Sam", Date(timeIntervalSince1970: TimeInterval(arc4random_uniform(100000000))), nil, false, false),
-//                                                                                                                  ("Sam", Date(), nil, false, true),
-//                                                                                                                  ("Sam", Date(), nil, false, false)]
     
     var onlineConvers = [String: ConversationData]() {
         didSet {
@@ -51,8 +31,7 @@ class ConversationsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        communicationManager.vc = self 
-        communicationManager.start()
+        communicationManager.usersPresenter = self
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -74,7 +53,8 @@ class ConversationsListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ConversationViewController {
-            vc.navigationItem.title = sender as? String 
+            vc.navigationItem.title = sender as? String
+            vc.communicationManager = self.communicationManager
         }
     }
 }

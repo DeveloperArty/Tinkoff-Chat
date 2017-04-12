@@ -13,16 +13,67 @@ class MultipeerCommunicator: NSObject, Communicator {
     
     // Properties
     weak var delegate: CommunicatorDelegate?
-    var online: Bool = false
+    var online: Bool = false {
+        willSet {
+            if newValue == true {
+                advertiser?.startAdvertisingPeer()
+                browser?.startBrowsingForPeers()
+            } else {
+                advertiser?.stopAdvertisingPeer()
+                browser?.stopBrowsingForPeers()
+            }
+        }
+    }
     var sessions = [MCPeerID: MCSession]()
     
     // mc main settings
-    fileprivate let myPeerID = MCPeerID(displayName: "arty.pablo")
+    private var _myPeerID: MCPeerID?
+    private var myPeerID: MCPeerID? {
+        get {
+            if _myPeerID == nil {
+                _myPeerID = MCPeerID(displayName: "arty.pablo")
+            }
+            return _myPeerID
+        }
+    }
     fileprivate let serviceType: String = "tinkoff-chat"
     fileprivate let discoveryInfo = [ "userName" : "Yo bro" ]
+    
     // advertiser & browser
-    var advertiser: MCNearbyServiceAdvertiser!
-    var browser: MCNearbyServiceBrowser!
+    private var _advertiser: MCNearbyServiceAdvertiser?
+    private var advertiser: MCNearbyServiceAdvertiser? {
+        get {
+            if _advertiser == nil {
+                guard let peer = myPeerID else {
+                    print("no peer")
+                    return nil
+                }
+                _advertiser = MCNearbyServiceAdvertiser(peer: peer,
+                                                        discoveryInfo: discoveryInfo,
+                                                        serviceType: serviceType)
+                _advertiser?.delegate = self
+                _advertiser?.startAdvertisingPeer()
+            }
+            return _advertiser
+        }
+    }
+    
+    private var _browser: MCNearbyServiceBrowser?
+    private var browser: MCNearbyServiceBrowser? {
+        get {
+            if _browser == nil {
+                guard let peer = myPeerID else {
+                    print("no peer")
+                    return nil
+                }
+                _browser = MCNearbyServiceBrowser(peer: peer,
+                                                  serviceType: serviceType)
+                _browser?.delegate = self
+                _browser?.startBrowsingForPeers()
+            }
+            return _browser
+        }
+    }
     
     func sendMessage(string: String,
                      to userID: String,
@@ -30,26 +81,13 @@ class MultipeerCommunicator: NSObject, Communicator {
         
     }
     
-    func start() {
-        print(#function)
-        
-        self.advertiser = MCNearbyServiceAdvertiser(peer: myPeerID,
-                                                    discoveryInfo: discoveryInfo,
-                                                    serviceType: serviceType)
-        self.browser = MCNearbyServiceBrowser(peer: myPeerID,
-                                              serviceType: serviceType)
-        advertiser.delegate = self
-        browser.delegate = self
-        advertiser.startAdvertisingPeer()
-        browser.startBrowsingForPeers()
-    }
     fileprivate func getSession(forUserWith peerID: MCPeerID) -> MCSession {
         if let session = self.sessions[peerID] {
             print("session found")
             return session
         } else {
             print("session created")
-            let newSession = MCSession(peer: myPeerID,
+            let newSession = MCSession(peer: myPeerID!,
                                        securityIdentity: nil,
                                        encryptionPreference: .none)
             newSession.delegate = self

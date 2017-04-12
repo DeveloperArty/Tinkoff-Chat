@@ -11,12 +11,24 @@ import Foundation
 class CommunicationManager: CommunicatorDelegate {
     
     // Properties 
-    lazy var communicator: Communicator = MultipeerCommunicator()
-    var vc: ConversationsListViewController? = nil
+    private var _communicator: Communicator?
+    private var communicator: Communicator? {
+        get {
+            if _communicator == nil {
+                _communicator = MultipeerCommunicator()
+                _communicator?.delegate = self
+            }
+            return _communicator
+        } set {
+            
+        }
+    }
     
-    func start() {
-        communicator.delegate = self 
-        communicator.start() 
+    var usersPresenter: UsersListPresenter?
+    var messagesPresenter: MessagesListPresenter? 
+    
+    init() {
+        communicator?.online = true
     }
     
     // discovering
@@ -25,10 +37,10 @@ class CommunicationManager: CommunicatorDelegate {
         data.online = true
         data.name = userName
         data.date = Date()
-        vc?.onlineConvers[userID] = data 
+        usersPresenter?.onlineConvers[userID] = data
     }
     func didLostUser(userID: String) {
-        vc?.onlineConvers[userID] = nil
+        usersPresenter?.onlineConvers[userID] = nil
     }
     
     // errors

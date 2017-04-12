@@ -8,19 +8,33 @@
 
 import UIKit
 
-class ConversationViewController: UIViewController {
+class ConversationViewController: UIViewController, MessagesListPresenter {
 
     // Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var messageField: UITextField!
+    @IBOutlet weak var messageView: UIView!
     
     // Properties
-    let data = ["Lorem",
-                "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."]
+    var communicationManager: CommunicatorDelegate?
+    
+    var messages = [Message]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        communicationManager?.messagesPresenter = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        
+        messageField.delegate = self 
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -32,6 +46,22 @@ class ConversationViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // UI Events
+    @IBAction func sendMessage(_ sender: Any) {
+        guard messageField.text != "" && messageField.text != nil else {
+            messageField.endEditing(true)
+            return
+        }
+        let message = Message(mCase: .outcoming, text: messageField.text!)
+        messages.append(message)
+        // send
+    }
+    
+    @IBAction func backTap(_ sender: UITapGestureRecognizer) {
+        messageField.endEditing(true)
+    }
+    
 }
 
 
@@ -49,21 +79,39 @@ extension ConversationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: MessageTableViewCell?
-        if (indexPath.row % 2) == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "incoming", for: indexPath) as? MessageTableViewCell
+        let message = messages[indexPath.row]
+        if message.mCase == .incoming {
+             cell = tableView.dequeueReusableCell(withIdentifier: "incoming", for: indexPath) as? MessageTableViewCell
         } else {
             cell = tableView.dequeueReusableCell(withIdentifier: "outcoming", for: indexPath) as? MessageTableViewCell
         }
-        cell?.textt = data[indexPath.row % 3]
+        cell?.textt = message.text
         cell?.ident.constant = self.view.frame.width*0.25
         return cell!
     }
 }
 
-
+extension ConversationViewController: UITextFieldDelegate {
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = keyboardSize.height
+            let oldFrame = messageView.frame
+            self.messageView.frame = CGRect(x: 0,
+                                            y: self.view.frame.height - keyboardHeight - oldFrame.height,
+                                            width: oldFrame.width,
+                                            height: oldFrame.height)
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        messageField.endEditing(true)
+        return true 
+    }
+}
 
