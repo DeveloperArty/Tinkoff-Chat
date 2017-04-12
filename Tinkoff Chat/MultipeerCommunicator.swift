@@ -25,10 +25,11 @@ class MultipeerCommunicator: NSObject, Communicator {
         }
     }
     var sessions = [MCPeerID: MCSession]()
+    var userIDs = [String: MCPeerID]()
     
     // mc main settings
     private var _myPeerID: MCPeerID?
-    private var myPeerID: MCPeerID? {
+    fileprivate var myPeerID: MCPeerID? {
         get {
             if _myPeerID == nil {
                 _myPeerID = MCPeerID(displayName: "arty.pablo")
@@ -37,7 +38,7 @@ class MultipeerCommunicator: NSObject, Communicator {
         }
     }
     fileprivate let serviceType: String = "tinkoff-chat"
-    fileprivate let discoveryInfo = [ "userName" : "Yo bro" ]
+    fileprivate let discoveryInfo = [ "userName" : "Arty" ]
     
     // advertiser & browser
     private var _advertiser: MCNearbyServiceAdvertiser?
@@ -78,7 +79,16 @@ class MultipeerCommunicator: NSObject, Communicator {
     func sendMessage(string: String,
                      to userID: String,
                      completionHandler: ((_ success: Bool, _ error: Error?) -> Void)? ) {
-        
+        let peerID = userIDs[userID]!
+        if let session = sessions[peerID] {
+            if let message = generateMessage(text: string) {
+                do {
+                    try session.send(message, toPeers: [peerID], with: .unreliable)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
     
     fileprivate func getSession(forUserWith peerID: MCPeerID) -> MCSession {
@@ -146,9 +156,13 @@ extension MultipeerCommunicator: MCNearbyServiceBrowserDelegate {
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        print(discoveryInfo)
+        print(info)
+        guard peerID != self.myPeerID else {
+            print("it's me")
+            return
+        }
         
-        if let name = discoveryInfo["userName"] {
+        if let name = info?["userName"] {
             let session = self.getSession(forUserWith: peerID)
             if !session.connectedPeers.contains(peerID) {
                 browser.invitePeer(peerID,
@@ -156,7 +170,9 @@ extension MultipeerCommunicator: MCNearbyServiceBrowserDelegate {
                                    withContext: nil,
                                    timeout: 30)
             }
-            delegate?.didFoundUser(userID: peerID.displayName, userName: name)
+            let userid = peerID.displayName
+            delegate?.didFoundUser(userID: userid, userName: name)
+            userIDs[userid] = peerID
         }
     }
 }
@@ -169,8 +185,16 @@ extension MultipeerCommunicator: MCSessionDelegate {
         print(#function)
         
         do {
-            let message = try JSONSerialization.jsonObject(with: data, options: [])
-            print(message)
+            if let message = try JSONSerialization.jsonObject(with: data,
+                                                              options: []) as? [String: String] {
+                if message["eventType"] == "TextMessage" {
+                    if let text = message["text"] {
+                        delegate?.didReceiveMessage(text: text,
+                                                    fromUser: peerID.displayName,
+                                                    toUser: (myPeerID?.displayName)!)
+                    }
+                }
+            }
         } catch {
             print(error.localizedDescription)
         }
@@ -185,14 +209,6 @@ extension MultipeerCommunicator: MCSessionDelegate {
             print("connecting")
         case .connected:
             print("connected!")
-            
-            if let message = generateMessage(text: "sdjndkjgnkjdf") {
-                do {
-                    try session.send(message, toPeers: [peerID], with: .unreliable)
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
         default:
             print("oh shit")
         }

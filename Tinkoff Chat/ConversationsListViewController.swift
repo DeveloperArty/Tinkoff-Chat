@@ -53,7 +53,9 @@ class ConversationsListViewController: UIViewController, UsersListPresenter {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ConversationViewController {
-            vc.navigationItem.title = sender as? String
+            let array = sender as? [String]
+            vc.navigationItem.title = array?[1]
+            vc.userID = array?[0]
             vc.communicationManager = self.communicationManager
         }
     }
@@ -78,7 +80,12 @@ extension ConversationsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? ConversationTableViewCell {
             let name = cell.name
-            self.performSegue(withIdentifier: "toSelectedConversation", sender: name)
+            var ids = [String]()
+            for id in onlineConvers.keys {
+                ids.append(id)
+            }
+            let userId = ids[indexPath.row]
+            self.performSegue(withIdentifier: "toSelectedConversation", sender: [userId, name])
         }
     }
 }

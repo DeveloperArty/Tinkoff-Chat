@@ -36,7 +36,6 @@ class CommunicationManager: CommunicatorDelegate {
         let data = ConversationData()
         data.online = true
         data.name = userName
-        data.date = Date()
         usersPresenter?.onlineConvers[userID] = data
     }
     func didLostUser(userID: String) {
@@ -52,7 +51,23 @@ class CommunicationManager: CommunicatorDelegate {
     }
     
     // messages
+    
+    func sendMessage(text: String, toUser: String, completion: ((Bool, Error?) -> Void)?) {
+        communicator?.sendMessage(string: text, to: toUser, completionHandler: completion)
+    }
+    
     func didReceiveMessage(text: String, fromUser: String, toUser: String) {
-        
+        if let userData = usersPresenter?.onlineConvers[fromUser] {
+            userData.date = Date()
+            userData.message = text
+            userData.hasUnreadMessages = true
+            usersPresenter?.onlineConvers[fromUser] = userData
+            
+            if let msg = self.messagesPresenter {
+                if msg.userID == fromUser {
+                    msg.messages.append(Message(mCase: .incoming, text: text))
+                }
+            }
+        }
     }
 }

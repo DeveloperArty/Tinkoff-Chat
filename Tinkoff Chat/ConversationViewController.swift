@@ -25,6 +25,7 @@ class ConversationViewController: UIViewController, MessagesListPresenter {
             }
         }
     }
+    var userID: String? 
     
     // Lifecycle
     override func viewDidLoad() {
@@ -55,7 +56,10 @@ class ConversationViewController: UIViewController, MessagesListPresenter {
         }
         let message = Message(mCase: .outcoming, text: messageField.text!)
         messages.append(message)
-        // send
+        messageField.text = nil
+        communicationManager?.sendMessage(text: message.text,
+                                          toUser: self.userID!,
+                                          completion: nil)
     }
     
     @IBAction func backTap(_ sender: UITapGestureRecognizer) {
@@ -110,8 +114,9 @@ extension ConversationViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.sendMessage(self)
         messageField.endEditing(true)
-        return true 
+        return true
     }
 }
 

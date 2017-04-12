@@ -9,9 +9,6 @@
 import Foundation
 import UIKit
 
-
-// сообщение communicator и communicationManager
-
 protocol CommunicatorDelegate: class {
     
     var usersPresenter: UsersListPresenter? {get set}
@@ -26,21 +23,6 @@ protocol CommunicatorDelegate: class {
     func failedToStartAdvertising(error: Error)
     
     // messages
+    func sendMessage(text: String, toUser: String, completion: ((_ success: Bool, _ error: Error?) -> Void)?)
     func didReceiveMessage(text: String, fromUser: String, toUser: String)
-}
-
-
-// сообщение listVC и manager
-
-protocol UsersListPresenter: class {
-    
-    var onlineConvers: [String: ConversationData] {get set}
-}
-
-
-// сообщение conVC и manager 
-
-protocol MessagesListPresenter: class {
-    
-    var messages: [Message] {get set}
 }

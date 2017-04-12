@@ -20,6 +20,8 @@
 		846378821E8A9A31002CE222 /* MessageCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846378811E8A9A31002CE222 /* MessageCellConfiguration.swift */; };
 		846378841E8A9B2B002CE222 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846378831E8A9B2B002CE222 /* MessageTableViewCell.swift */; };
 		84684A821E9E5D2200851A2E /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84684A811E9E5D2200851A2E /* Messages.swift */; };
+		84684A841E9EDB0300851A2E /* MessagesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84684A831E9EDB0300851A2E /* MessagesListPresenter.swift */; };
+		84684A861E9EDB5800851A2E /* UsersListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84684A851E9EDB5800851A2E /* UsersListPresenter.swift */; };
 		8475A66D1E693CF4000D134C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475A66C1E693CF4000D134C /* AppDelegate.swift */; };
 		8475A6721E693CF4000D134C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8475A6701E693CF4000D134C /* Main.storyboard */; };
 		8475A6751E693CF4000D134C /* Tinkoff_Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8475A6731E693CF4000D134C /* Tinkoff_Chat.xcdatamodeld */; };
@@ -49,6 +51,8 @@
 		846378811E8A9A31002CE222 /* MessageCellConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellConfiguration.swift; sourceTree = "<group>"; };
 		846378831E8A9B2B002CE222 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		84684A811E9E5D2200851A2E /* Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		84684A831E9EDB0300851A2E /* MessagesListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesListPresenter.swift; sourceTree = "<group>"; };
+		84684A851E9EDB5800851A2E /* UsersListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersListPresenter.swift; sourceTree = "<group>"; };
 		8475A6691E693CF4000D134C /* Tinkoff Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8475A66C1E693CF4000D134C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8475A6711E693CF4000D134C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				8498A2751E880DFC00CF2D96 /* ConversationViewController.swift */,
+				84684A831E9EDB0300851A2E /* MessagesListPresenter.swift */,
 				84684A811E9E5D2200851A2E /* Messages.swift */,
 				846378851E8A9B3B002CE222 /* Message cell */,
 			);
@@ -232,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				8498A2691E85569A00CF2D96 /* ConversationsListViewController.swift */,
+				84684A851E9EDB5800851A2E /* UsersListPresenter.swift */,
 				8498A26F1E855D6A00CF2D96 /* Conversation Cell */,
 			);
 			name = "Conversations List";
@@ -337,6 +343,8 @@
 				84090DDA1E92372600380A91 /* BasicClassExtensions.swift in Sources */,
 				8498A26A1E85569A00CF2D96 /* ConversationsListViewController.swift in Sources */,
 				8498A2721E855DBB00CF2D96 /* ConversationTableViewCell.swift in Sources */,
+				84684A841E9EDB0300851A2E /* MessagesListPresenter.swift in Sources */,
+				84684A861E9EDB5800851A2E /* UsersListPresenter.swift in Sources */,
 				8475A6751E693CF4000D134C /* Tinkoff_Chat.xcdatamodeld in Sources */,
 				84DCDE771E93EB0D00F1F563 /* ProfileDataDefinition.swift in Sources */,
 				8498A26E1E855C6800CF2D96 /* ConversationCellConfiguration.swift in Sources */,
