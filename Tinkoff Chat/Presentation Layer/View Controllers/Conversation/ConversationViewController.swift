@@ -50,8 +50,8 @@ class ConversationViewController: UIViewController, MessagesListPresenter {
     
     // UI Events
     @IBAction func sendMessage(_ sender: Any) {
+        messageField.endEditing(true)
         guard messageField.text != "" && messageField.text != nil else {
-            messageField.endEditing(true)
             return
         }
         let message = Message(mCase: .outcoming, text: messageField.text!)

@@ -85,6 +85,9 @@ extension ConversationsListViewController: UITableViewDelegate {
                 ids.append(id)
             }
             let userId = ids[indexPath.row]
+            if name != nil {
+                onlineConvers[name!]?.hasUnreadMessages = false
+            }
             self.performSegue(withIdentifier: "toSelectedConversation", sender: [userId, name])
         }
     }

@@ -24,7 +24,11 @@ class MultipeerCommunicator: NSObject, Communicator {
             }
         }
     }
-    var sessions = [MCPeerID: MCSession]()
+    var sessions = [MCPeerID: MCSession]() {
+        didSet {
+            print("sessions: \(sessions.count)" )
+        }
+    }
     var userIDs = [String: MCPeerID]()
     
     // mc main settings
@@ -148,7 +152,7 @@ extension MultipeerCommunicator: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         print(#function)
         delegate?.didLostUser(userID: peerID.displayName)
-        sessions[peerID] = nil
+        sessions.removeValue(forKey: peerID)
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
