@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84A5909A1EA54277005C175E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A590981EA54277005C175E /* LaunchScreen.storyboard */; };
 		84AF9EA91EA4CDD10089EA38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AF9E961EA4CDD10089EA38 /* Main.storyboard */; };
 		84AF9EAA1EA4CDD10089EA38 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF9E9A1EA4CDD10089EA38 /* ConversationViewController.swift */; };
 		84AF9EAB1EA4CDD10089EA38 /* MessageCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF9E9C1EA4CDD10089EA38 /* MessageCellConfiguration.swift */; };
@@ -21,7 +22,6 @@
 		84AF9EB41EA4CDD10089EA38 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF9EA81EA4CDD10089EA38 /* ProfileViewController.swift */; };
 		84AF9EBE1EA4CDDE0089EA38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF9EB61EA4CDDE0089EA38 /* AppDelegate.swift */; };
 		84AF9EBF1EA4CDDE0089EA38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AF9EB71EA4CDDE0089EA38 /* Assets.xcassets */; };
-		84AF9EC01EA4CDDE0089EA38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AF9EB81EA4CDDE0089EA38 /* LaunchScreen.storyboard */; };
 		84AF9EC11EA4CDDE0089EA38 /* BasicClassExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF9EBA1EA4CDDE0089EA38 /* BasicClassExtensions.swift */; };
 		84AF9EC31EA4CDDE0089EA38 /* Tinkoff_Chat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84AF9EBC1EA4CDDE0089EA38 /* Tinkoff_Chat.xcdatamodeld */; };
 		84AF9ED11EA4CDEF0089EA38 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF9EC61EA4CDEF0089EA38 /* CommunicationManager.swift */; };
@@ -39,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		8475A6691E693CF4000D134C /* Tinkoff Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84A590991EA54277005C175E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84AF9E971EA4CDD10089EA38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84AF9E9A1EA4CDD10089EA38 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		84AF9E9C1EA4CDD10089EA38 /* MessageCellConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellConfiguration.swift; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		84AF9EA81EA4CDD10089EA38 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		84AF9EB61EA4CDDE0089EA38 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84AF9EB71EA4CDDE0089EA38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		84AF9EB91EA4CDDE0089EA38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84AF9EBA1EA4CDDE0089EA38 /* BasicClassExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicClassExtensions.swift; sourceTree = "<group>"; };
 		84AF9EBB1EA4CDDE0089EA38 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84AF9EBD1EA4CDDE0089EA38 /* Tinkoff_Chat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tinkoff_Chat.xcdatamodel; sourceTree = "<group>"; };
@@ -106,7 +106,6 @@
 				84AF9EB61EA4CDDE0089EA38 /* AppDelegate.swift */,
 				84AF9EB71EA4CDDE0089EA38 /* Assets.xcassets */,
 				84AF9EBB1EA4CDDE0089EA38 /* Info.plist */,
-				84AF9EB81EA4CDDE0089EA38 /* LaunchScreen.storyboard */,
 				84AF9EBC1EA4CDDE0089EA38 /* Tinkoff_Chat.xcdatamodeld */,
 			);
 			path = "Tinkoff Chat";
@@ -115,8 +114,9 @@
 		84AF9E951EA4CDD10089EA38 /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
-				84AF9E981EA4CDD10089EA38 /* View Controllers */,
 				84AF9E961EA4CDD10089EA38 /* Main.storyboard */,
+				84A590981EA54277005C175E /* LaunchScreen.storyboard */,
+				84AF9E981EA4CDD10089EA38 /* View Controllers */,
 			);
 			path = "Presentation Layer";
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84AF9EB11EA4CDD10089EA38 /* ConversationTableViewCell.xib in Resources */,
-				84AF9EC01EA4CDDE0089EA38 /* LaunchScreen.storyboard in Resources */,
+				84A5909A1EA54277005C175E /* LaunchScreen.storyboard in Resources */,
 				84AF9EBF1EA4CDDE0089EA38 /* Assets.xcassets in Resources */,
 				84AF9EA91EA4CDD10089EA38 /* Main.storyboard in Resources */,
 			);
@@ -365,21 +365,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		84A590981EA54277005C175E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84A590991EA54277005C175E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		84AF9E961EA4CDD10089EA38 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				84AF9E971EA4CDD10089EA38 /* Base */,
 			);
 			name = Main.storyboard;
-			path = .;
-			sourceTree = "<group>";
-		};
-		84AF9EB81EA4CDDE0089EA38 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				84AF9EB91EA4CDDE0089EA38 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			path = .;
 			sourceTree = "<group>";
 		};
