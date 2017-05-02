@@ -13,5 +13,4 @@ class ProfileData {
     var nickname: String?
     var info: String?
     var avatar: UIImage?
-    var textColor: UIColor?
 }

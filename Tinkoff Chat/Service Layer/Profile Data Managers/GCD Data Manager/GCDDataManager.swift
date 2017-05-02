@@ -12,30 +12,30 @@ import UIKit
 class GCDDataManager: ProfileDataManager {
     
     // Properties 
-    private let dataOperator = ProfileDataOperator()
+    private let dataOperator = CoreDataStack()
     
     // Meths 
     func saveData(data: ProfileData, completionHandler: @escaping (_ success: Bool) -> Void ) {
         
-        print("GCD")
         DispatchQueue.global(qos: .userInitiated).async {
-            self.dataOperator.save(data: data) { success in
-                
-                DispatchQueue.main.sync {
-                    completionHandler(success)
-                }
+            let success = self.dataOperator.saveCurrentUserData(profileData: data)
+            DispatchQueue.main.sync {
+                completionHandler(success)
             }
+            return
         }
     }
     
     func getData(completionHandler: @escaping (_ data: ProfileData) -> Void ) {
         
         DispatchQueue.global(qos: .userInitiated).async {
-            self.dataOperator.get() { data in
-                
+            
+            if let data = self.dataOperator.getCurruntUserData() {
                 DispatchQueue.main.sync {
                     completionHandler(data)
                 }
+            } else {
+                print("Profile data manager did not receive data from core layer")
             }
         }
     }
