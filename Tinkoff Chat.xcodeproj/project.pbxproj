@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		84075CD81EC8DB6500F85F30 /* RandomAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84075CD71EC8DB6500F85F30 /* RandomAvatarViewController.swift */; };
+		84075CDA1EC8E3F900F85F30 /* WebPicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84075CD91EC8E3F900F85F30 /* WebPicCollectionViewCell.swift */; };
+		84075CDC1EC8F08800F85F30 /* PixabayImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84075CDB1EC8F08800F85F30 /* PixabayImageProvider.swift */; };
 		840AF2DE1EB7B74200A1AD14 /* ManagedObjectsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AF2DD1EB7B74200A1AD14 /* ManagedObjectsExtensions.swift */; };
 		840B8C6A1EB3592B0024FA99 /* Storage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 840B8C681EB3592B0024FA99 /* Storage.xcdatamodeld */; };
 		84660C7A1EAFA2CA00ACE9EE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84660C791EAFA2CA00ACE9EE /* CoreDataStack.swift */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		84075CD71EC8DB6500F85F30 /* RandomAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomAvatarViewController.swift; sourceTree = "<group>"; };
+		84075CD91EC8E3F900F85F30 /* WebPicCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebPicCollectionViewCell.swift; sourceTree = "<group>"; };
+		84075CDB1EC8F08800F85F30 /* PixabayImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixabayImageProvider.swift; sourceTree = "<group>"; };
 		840AF2DD1EB7B74200A1AD14 /* ManagedObjectsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectsExtensions.swift; sourceTree = "<group>"; };
 		840B8C691EB3592B0024FA99 /* Storage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Storage.xcdatamodel; sourceTree = "<group>"; };
 		84660C791EAFA2CA00ACE9EE /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 			children = (
 				84AF9EA81EA4CDD10089EA38 /* ProfileViewController.swift */,
 				84075CD71EC8DB6500F85F30 /* RandomAvatarViewController.swift */,
+				84075CDB1EC8F08800F85F30 /* PixabayImageProvider.swift */,
+				84075CD91EC8E3F900F85F30 /* WebPicCollectionViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -339,10 +345,12 @@
 				840AF2DE1EB7B74200A1AD14 /* ManagedObjectsExtensions.swift in Sources */,
 				84075CD81EC8DB6500F85F30 /* RandomAvatarViewController.swift in Sources */,
 				84AF9EB21EA4CDD10089EA38 /* ConversationsListViewController.swift in Sources */,
+				84075CDC1EC8F08800F85F30 /* PixabayImageProvider.swift in Sources */,
 				84AF9EB41EA4CDD10089EA38 /* ProfileViewController.swift in Sources */,
 				84AF9ED11EA4CDEF0089EA38 /* CommunicationManager.swift in Sources */,
 				8492CB021EC38EAA0067B121 /* ConversationsDataManager.swift in Sources */,
 				84AF9EE01EA4CDF60089EA38 /* MultipeerCommunicator.swift in Sources */,
+				84075CDA1EC8E3F900F85F30 /* WebPicCollectionViewCell.swift in Sources */,
 				84AF9EAF1EA4CDD10089EA38 /* ConversationCellConfiguration.swift in Sources */,
 				84AF9EDF1EA4CDF60089EA38 /* Communicator.swift in Sources */,
 				84AF9ED21EA4CDEF0089EA38 /* CommunicatorDelegate.swift in Sources */,
