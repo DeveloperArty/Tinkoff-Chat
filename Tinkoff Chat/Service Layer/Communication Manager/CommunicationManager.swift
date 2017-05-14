@@ -10,36 +10,33 @@ import Foundation
 
 class CommunicationManager: CommunicatorDelegate {
     
-    // Properties 
-    private var _communicator: Communicator?
-    private var communicator: Communicator? {
-        get {
-            if _communicator == nil {
-                _communicator = MultipeerCommunicator()
-                _communicator?.delegate = self
-            }
-            return _communicator
-        } set {
-            
-        }
-    }
+    // Properties
+    private lazy var communicator: Communicator = MultipeerCommunicator()
+//    private lazy var converseManager: ConversationsDataService = ConverssationsDataManager()
     
     var usersPresenter: UsersListPresenter?
     var messagesPresenter: MessagesListPresenter? 
     
     init() {
-        communicator?.online = true
+        communicator.delegate = self
+        communicator.online = true
     }
     
     // discovering
+    
     func didFoundUser(userID: String, userName: String) {
-        let data = ConversationData()
-        data.online = true
-        data.name = userName
-        usersPresenter?.onlineConvers[userID] = data
+//        guard let conversation = converseManager.conversationForUser(with: userID, name: userName) else {
+//            print("co manager failed to load conversation")
+//            return
+//        }
+        
+//        let data = ConversationData()
+//        data.online = true
+//        data.name = userName
+//        usersPresenter?.onlineConvers[userID] = data
     }
     func didLostUser(userID: String) {
-        usersPresenter?.onlineConvers[userID] = nil
+//        usersPresenter?.onlineConvers[userID] = nil
     }
     
     // errors
@@ -53,7 +50,7 @@ class CommunicationManager: CommunicatorDelegate {
     // messages
     
     func sendMessage(text: String, toUser: String, completion: ((Bool, Error?) -> Void)?) {
-        communicator?.sendMessage(string: text, to: toUser, completionHandler: completion)
+        communicator.sendMessage(string: text, to: toUser, completionHandler: completion)
     }
     
     func didReceiveMessage(text: String, fromUser: String, toUser: String) {

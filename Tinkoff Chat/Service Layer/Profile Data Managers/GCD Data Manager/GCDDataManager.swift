@@ -12,7 +12,7 @@ import UIKit
 class GCDDataManager: ProfileDataManager {
     
     // Properties 
-    private let dataOperator = CoreDataStack()
+    private let dataOperator = CoreDataStack.sharedInstance
     
     // Meths 
     func saveData(data: ProfileData, completionHandler: @escaping (_ success: Bool) -> Void ) {

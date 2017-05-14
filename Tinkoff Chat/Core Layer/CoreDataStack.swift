@@ -12,6 +12,11 @@ import UIKit
 
 class CoreDataStack {
     
+    // Singleton 
+    static let sharedInstance = CoreDataStack()
+    
+    private init() { }
+    
     // MARK: - Properties
     // storage path
     private var storeURL: URL {
@@ -105,7 +110,7 @@ class CoreDataStack {
     
     // Save Co
     private var _saveContext: NSManagedObjectContext?
-    private var saveContext: NSManagedObjectContext? {
+    private var saveContext: NSManagedObjectContext! {
         get {
             if _saveContext == nil {
                 let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
@@ -123,8 +128,13 @@ class CoreDataStack {
         }
     }
     
+    
+    
+    
+    
     // MARK: - Open Meths
     
+    // Profile Data
     func getCurruntUserData() -> ProfileData? {
         
         let profileData = ProfileData()
@@ -162,9 +172,32 @@ class CoreDataStack {
         if let info = profileData.info {
             appUser.currentUser?.info = info
         }
-        performSave(context: saveContext!, completionHandler: nil)
+        performSave(context: saveContext, completionHandler: nil)
         return true 
     }
+    
+    // Users
+    func getUser(with id: String, userName: String) -> User? {
+        let user = User.getUser(with: id, userName: userName, context: saveContext)
+        self.performSave(context: saveContext, completionHandler: nil) 
+        return user
+    }
+    
+    
+    
+    
+    
+    // Conversations
+//    func saveConversation(with id: String) {
+//        
+//        if Conversation.getConversation(with: id, context: saveContext) == nil {
+//            Conversation.insertConversation(with: id, into: saveContext)
+//            performSave(context: saveContext, completionHandler: nil)
+//        }
+//    }
+//    
+    
+    
     
     
     // MARK: - Private Meths
@@ -173,12 +206,8 @@ class CoreDataStack {
         if let appUser = AppUser.findOrInsertAppUser(in: context) {
             performSave(context: context, completionHandler: nil)
             return appUser
-        }
-        if let parent = context.parent {
-            return getAppUser(in: parent)
-        } else {
-            return nil
-        }
+        } 
+        return nil
     }
     
     

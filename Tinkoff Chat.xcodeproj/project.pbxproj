@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84075CD81EC8DB6500F85F30 /* RandomAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84075CD71EC8DB6500F85F30 /* RandomAvatarViewController.swift */; };
 		840AF2DE1EB7B74200A1AD14 /* ManagedObjectsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AF2DD1EB7B74200A1AD14 /* ManagedObjectsExtensions.swift */; };
 		840B8C6A1EB3592B0024FA99 /* Storage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 840B8C681EB3592B0024FA99 /* Storage.xcdatamodeld */; };
 		84660C7A1EAFA2CA00ACE9EE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84660C791EAFA2CA00ACE9EE /* CoreDataStack.swift */; };
+		8492CB021EC38EAA0067B121 /* ConversationsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492CB011EC38EAA0067B121 /* ConversationsDataManager.swift */; };
+		8492CB061EC3B9BE0067B121 /* ConversationsDataService .swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492CB051EC3B9BE0067B121 /* ConversationsDataService .swift */; };
+		8492CB081EC8BA870067B121 /* ConversationDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492CB071EC8BA870067B121 /* ConversationDataProvider.swift */; };
 		84A5909A1EA54277005C175E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84A590981EA54277005C175E /* LaunchScreen.storyboard */; };
 		84AF9EA91EA4CDD10089EA38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AF9E961EA4CDD10089EA38 /* Main.storyboard */; };
 		84AF9EAA1EA4CDD10089EA38 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF9E9A1EA4CDD10089EA38 /* ConversationViewController.swift */; };
@@ -35,10 +39,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84075CD71EC8DB6500F85F30 /* RandomAvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomAvatarViewController.swift; sourceTree = "<group>"; };
 		840AF2DD1EB7B74200A1AD14 /* ManagedObjectsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectsExtensions.swift; sourceTree = "<group>"; };
 		840B8C691EB3592B0024FA99 /* Storage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Storage.xcdatamodel; sourceTree = "<group>"; };
 		84660C791EAFA2CA00ACE9EE /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8475A6691E693CF4000D134C /* Tinkoff Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinkoff Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8492CB011EC38EAA0067B121 /* ConversationsDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationsDataManager.swift; path = "Profile Data Managers/ConversationsDataManager.swift"; sourceTree = "<group>"; };
+		8492CB051EC3B9BE0067B121 /* ConversationsDataService .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConversationsDataService .swift"; sourceTree = "<group>"; };
+		8492CB071EC8BA870067B121 /* ConversationDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationDataProvider.swift; sourceTree = "<group>"; };
 		84A590991EA54277005C175E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84AF9E971EA4CDD10089EA38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84AF9E9A1EA4CDD10089EA38 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 			children = (
 				84660C791EAFA2CA00ACE9EE /* CoreDataStack.swift */,
 				840AF2DD1EB7B74200A1AD14 /* ManagedObjectsExtensions.swift */,
+				8492CB071EC8BA870067B121 /* ConversationDataProvider.swift */,
 				840B8C681EB3592B0024FA99 /* Storage.xcdatamodeld */,
 			);
 			name = "Core Data";
@@ -114,6 +123,24 @@
 			path = "Tinkoff Chat";
 			sourceTree = "<group>";
 		};
+		8492CB031EC38EBC0067B121 /* Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				8492CB011EC38EAA0067B121 /* ConversationsDataManager.swift */,
+				8492CB051EC3B9BE0067B121 /* ConversationsDataService .swift */,
+			);
+			name = Conversations;
+			sourceTree = "<group>";
+		};
+		8492CB041EC38F110067B121 /* Data Managers  */ = {
+			isa = PBXGroup;
+			children = (
+				84AF9EC81EA4CDEF0089EA38 /* Profile */,
+				8492CB031EC38EBC0067B121 /* Conversations */,
+			);
+			name = "Data Managers ";
+			sourceTree = "<group>";
+		};
 		84AF9E951EA4CDD10089EA38 /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,9 +154,9 @@
 		84AF9E981EA4CDD10089EA38 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84AF9EA71EA4CDD10089EA38 /* Profile */,
 				84AF9E991EA4CDD10089EA38 /* Conversation */,
 				84AF9EA01EA4CDD10089EA38 /* Conversations List */,
-				84AF9EA71EA4CDD10089EA38 /* Profile */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -178,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				84AF9EA81EA4CDD10089EA38 /* ProfileViewController.swift */,
+				84075CD71EC8DB6500F85F30 /* RandomAvatarViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -186,7 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				84AF9EC51EA4CDEF0089EA38 /* Communication Manager */,
-				84AF9EC81EA4CDEF0089EA38 /* Profile Data Managers */,
+				8492CB041EC38F110067B121 /* Data Managers  */,
 			);
 			path = "Service Layer";
 			sourceTree = "<group>";
@@ -200,13 +228,14 @@
 			path = "Communication Manager";
 			sourceTree = "<group>";
 		};
-		84AF9EC81EA4CDEF0089EA38 /* Profile Data Managers */ = {
+		84AF9EC81EA4CDEF0089EA38 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				84AF9ED01EA4CDEF0089EA38 /* ProfileDataManager.swift */,
 				84AF9ECA1EA4CDEF0089EA38 /* GCDDataManager.swift */,
 				84AF9EDD1EA4CDF60089EA38 /* ProfileData.swift */,
 			);
+			name = Profile;
 			path = "Profile Data Managers";
 			sourceTree = "<group>";
 		};
@@ -303,13 +332,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				84AF9EBE1EA4CDDE0089EA38 /* AppDelegate.swift in Sources */,
+				8492CB081EC8BA870067B121 /* ConversationDataProvider.swift in Sources */,
 				840B8C6A1EB3592B0024FA99 /* Storage.xcdatamodeld in Sources */,
 				84AF9EAB1EA4CDD10089EA38 /* MessageCellConfiguration.swift in Sources */,
 				84AF9ED31EA4CDEF0089EA38 /* GCDDataManager.swift in Sources */,
 				840AF2DE1EB7B74200A1AD14 /* ManagedObjectsExtensions.swift in Sources */,
+				84075CD81EC8DB6500F85F30 /* RandomAvatarViewController.swift in Sources */,
 				84AF9EB21EA4CDD10089EA38 /* ConversationsListViewController.swift in Sources */,
 				84AF9EB41EA4CDD10089EA38 /* ProfileViewController.swift in Sources */,
 				84AF9ED11EA4CDEF0089EA38 /* CommunicationManager.swift in Sources */,
+				8492CB021EC38EAA0067B121 /* ConversationsDataManager.swift in Sources */,
 				84AF9EE01EA4CDF60089EA38 /* MultipeerCommunicator.swift in Sources */,
 				84AF9EAF1EA4CDD10089EA38 /* ConversationCellConfiguration.swift in Sources */,
 				84AF9EDF1EA4CDF60089EA38 /* Communicator.swift in Sources */,
@@ -321,6 +353,7 @@
 				84AF9EE11EA4CDF60089EA38 /* ProfileData.swift in Sources */,
 				84660C7A1EAFA2CA00ACE9EE /* CoreDataStack.swift in Sources */,
 				84AF9EAA1EA4CDD10089EA38 /* ConversationViewController.swift in Sources */,
+				8492CB061EC3B9BE0067B121 /* ConversationsDataService .swift in Sources */,
 				84AF9ED71EA4CDEF0089EA38 /* ProfileDataManager.swift in Sources */,
 				84AF9EAC1EA4CDD10089EA38 /* MessageTableViewCell.swift in Sources */,
 			);

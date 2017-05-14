@@ -17,6 +17,7 @@ protocol ConversationCellConfiguration {
     var hasUnreadMessages: Bool {get set}
 }
 
+
 class ConversationData {
     
     var name: String?
@@ -25,3 +26,4 @@ class ConversationData {
     var online: Bool = false
     var hasUnreadMessages: Bool = false 
 }
+
