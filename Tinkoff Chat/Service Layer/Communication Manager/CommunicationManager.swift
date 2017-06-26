@@ -30,13 +30,13 @@ class CommunicationManager: CommunicatorDelegate {
 //            return
 //        }
         
-//        let data = ConversationData()
-//        data.online = true
-//        data.name = userName
-//        usersPresenter?.onlineConvers[userID] = data
+        let data = ConversationData()
+        data.online = true
+        data.name = userName
+        usersPresenter?.onlineConvers[userID] = data
     }
     func didLostUser(userID: String) {
-//        usersPresenter?.onlineConvers[userID] = nil
+        usersPresenter?.onlineConvers[userID] = nil
     }
     
     // errors

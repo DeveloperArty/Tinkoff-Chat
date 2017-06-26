@@ -8,14 +8,14 @@
 
 import Foundation
 
-class ConverssationsDataManager: ConversationsDataService {
-    
-    let dataStack = CoreDataStack.sharedInstance
-    
-    func conversationForUser(with id: String, name: String) -> Conversation? {
-        if let user = dataStack.getUser(with: id, userName: name) {
-            
-        }
-        return nil 
-    }
-}
+//class ConverssationsDataManager: ConversationsDataService {
+//    
+//    let dataStack = CoreDataStack.sharedInstance
+//    
+//    func conversationForUser(with id: String, name: String) -> Conversation? {
+//        if let user = dataStack.getUser(with: id, userName: name) {
+//            
+//        }
+//        return nil 
+//    }
+//}
